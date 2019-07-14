@@ -39,10 +39,16 @@ public class RedisDemoApplication implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         ReactiveHashOperations<String, String, String> hashOps = redisTemplate.opsForHash();
-        redisCacheTemplate.opsForHash().put("apple", "x", "6000");
-        redisCacheTemplate.opsForHash().put("apple", "xr", "5000");
-        redisCacheTemplate.opsForHash().put("apple", "xs max","8001");
-
+        
+//        redisCacheTemplate.opsForHash().put("apple", "x", "6000");
+//        redisCacheTemplate.opsForHash().put("apple", "xr", "5000");
+        Long s=System.currentTimeMillis();
+        for(int i=0;i<1000000;i++) {
+        	//redisCacheTemplate.opsForHash().put("apple", "xs max",""+i);
+        	redisCacheTemplate.opsForValue().set("key"+i, "value"+i);
+        }
+        Long e=System.currentTimeMillis();
+        System.out.println(1000000/(e-s)*1000);
         System.out.print(redisCacheTemplate.opsForHash().get("apple", "xs max"));
     }
 }
