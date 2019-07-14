@@ -47,7 +47,7 @@ public class RedisDemoApplication implements ApplicationRunner {
 //        mono3.subscribe(System.out::println);
         redisCacheTemplate.opsForHash().put("apple", "x", "6000");
         redisCacheTemplate.opsForHash().put("apple", "xr", "5000");
-        redisCacheTemplate.opsForHash().put("apple", "xs max","8000");
+        redisCacheTemplate.opsForHash().put("apple", "xs max","8001");
 
         System.out.print(redisCacheTemplate.opsForHash().get("apple", "xs max"));
     }
