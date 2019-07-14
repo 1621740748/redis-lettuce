@@ -39,12 +39,6 @@ public class RedisDemoApplication implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         ReactiveHashOperations<String, String, String> hashOps = redisTemplate.opsForHash();
-//        Mono mono1 = hashOps.put("apple", "x", "6000");
-//        mono1.subscribe(System.out::println);
-//        Mono mono2 = hashOps.put("apple", "xr", "5000");
-//        mono2.subscribe(System.out::println);
-//        Mono mono3 = hashOps.put("apple", "xs max", "8000");
-//        mono3.subscribe(System.out::println);
         redisCacheTemplate.opsForHash().put("apple", "x", "6000");
         redisCacheTemplate.opsForHash().put("apple", "xr", "5000");
         redisCacheTemplate.opsForHash().put("apple", "xs max","8001");
